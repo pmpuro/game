@@ -1,0 +1,18 @@
+{:deps {}
+ :aliases
+ {
+  :run { :main-opts ["-m" "mato.core"]}
+  :watch {:extra-paths ["test"]
+          :extra-deps {lambdaisland/kaocha {:mvn/version "1.71.1119"}}
+          :main-opts   ["-m" "kaocha.runner"]
+          :exec-fn kaocha.runner/exec-fn
+          :exec-args {:watch? true}}
+  :test
+  {:extra-paths ["test"]
+   :extra-deps {lambdaisland/kaocha {:mvn/version "1.69.1069"}}
+   :main-opts   ["-m" "kaocha.runner"]
+   :exec-fn kaocha.runner/exec-fn
+   :exec-args {}}
+  }
+ }
+
