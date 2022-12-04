@@ -80,10 +80,10 @@
                       direction-diag-left-up
                       direction-diag-left-down
                       ]]
-    (reduce +
-     (map 
-        (fn [direction] (count (collect-to-direction piece position direction board))) 
-        directions)))))
+      (reduce +
+              (map 
+                (fn [direction] (count (collect-to-direction piece position direction board))) 
+                directions)))))
 
 (defn
   valid-move
@@ -123,8 +123,8 @@
   scan-board-for-empty-positions
   "scans empty positions"
   [board-size board]
-    (for [x (range (inc board-size)) y (range (inc board-size)) :when (nil? (board [x y]))] 
-      [x y]))
+  (for [x (range (inc board-size)) y (range (inc board-size)) :when (nil? (board [x y]))] 
+    [x y]))
 
 (defn
   value-positions
