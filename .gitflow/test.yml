@@ -1,0 +1,22 @@
+name: tests
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+
+permissions:
+  contents: read
+
+jobs:
+  tests:
+    name: Run unit tests
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+    container:
+      image: clojure:latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: clojure -M:test
