@@ -50,9 +50,7 @@
     (t/testing "diagonal down"
       (t/is (= 2 (i/value-of :x [1 1] { [0 0] :x, [2 2] :x}))))
     (t/testing "diagonal up"
-      (t/is (= 2 (i/value-of :x [1 1] { [0 2] :x, [2 0] :x}))))
-    )
-  )
+      (t/is (= 2 (i/value-of :x [1 1] { [0 2] :x, [2 0] :x}))))))
 
 (t/deftest test-valid-test
   (let [board-size 10] 
@@ -62,24 +60,25 @@
     (t/is (not (i/valid-move board-size [(inc board-size) 0])))
     (t/is (not (i/valid-move board-size [0 (inc board-size)])))))
 
-(t/testing "test-winner?"
-  (let [length 3]
-    (t/testing "looser"
-      (t/is (not (i/winner? length :x [0 0] {[1 0] :x}))))
+(t/deftest test-winner?
+  (t/testing "test-winner?"
+    (let [length 3]
+      (t/testing "looser"
+        (t/is (not (i/winner? length :x [0 0] {[1 0] :x}))))
 
-    (t/testing "on x axis"
-      (t/is (i/winner? length :x [0 0] {[1 0] :x, [2 0] :x}))
-      (t/is (i/winner? length :x [2 0] {[1 0] :x, [3 0] :x})))
+      (t/testing "on x axis"
+        (t/is (i/winner? length :x [0 0] {[1 0] :x, [2 0] :x}))
+        (t/is (i/winner? length :x [2 0] {[1 0] :x, [3 0] :x})))
 
-    (t/testing "on y axis"
-      (t/is (i/winner? length :x [0 0] {[0 1] :x, [0 2] :x}))
-      (t/is (i/winner? length :x [0 2] {[0 1] :x, [0 3] :x})))
-    
-    (t/testing "on diagonal down"
-      (t/is (i/winner? length :x [0 0] {[1 1] :x, [2 2] :x})))
+      (t/testing "on y axis"
+        (t/is (i/winner? length :x [0 0] {[0 1] :x, [0 2] :x}))
+        (t/is (i/winner? length :x [0 2] {[0 1] :x, [0 3] :x})))
 
-    (t/testing "on diagonal up"
-      (t/is (i/winner? length :x [0 2] {[1 1] :x, [2 0] :x})))))
+      (t/testing "on diagonal down"
+        (t/is (i/winner? length :x [0 0] {[1 1] :x, [2 2] :x})))
+
+      (t/testing "on diagonal up"
+        (t/is (i/winner? length :x [0 2] {[1 1] :x, [2 0] :x}))))))
 
 (t/deftest test-scan-board-for-empty-positions
   (let [size 2]

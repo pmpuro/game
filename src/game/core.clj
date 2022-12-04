@@ -81,7 +81,16 @@
   [piece position board]
   (if (not (nil? (board position))) 
     0
-    (let [directions [direction-down direction-up direction-left direction-right]]
+    (let [directions [
+                      direction-down 
+                      direction-up 
+                      direction-left 
+                      direction-right
+                      direction-diag-right-down
+                      direction-diag-right-up
+                      direction-diag-left-up
+                      direction-diag-left-down
+                      ]]
     (reduce +
      (map 
         (fn [direction] (count (collect-to-direction piece position direction board))) 
