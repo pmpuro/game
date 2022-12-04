@@ -36,17 +36,6 @@
      [(inc x) (inc y)]
      (give-right [x y]))))
 
-;; 1 2 3 4 5 6 7 8 9 10
-;; . . . X . . . . . . 
-;; 
-;; lower and upper bound
-;; distance from position
-
-;; find how many pieces on right (and left and diagonal)
-;; check if own piece on position
-
-
-
 (defn 
   is-there-piece
   "checks if there is a piece in given direction"
@@ -68,12 +57,6 @@
           (conj result next-position) 
           next-position 
           (position-at direction next-position))))))
-
-;;  . . . . .
-;;  . . X . .
-;;  . . X . .
-;;  . X . X .
-;;  . . . . .
 
 (defn 
   value-of 
@@ -145,14 +128,6 @@
     (fn [position] [(value-of piece position board) position]) 
     free-positions-coll))
 
-(comment
-  (value-positions :x {} [[0 0] [1 0]]) ; ([0 [0 0]] [0 [1 0]])
-  (sort-by first [[1 [0 0]] [0 [1 0]]]) ; ([0 [1 0]] [1 [0 0]])
-  (first (rest (first (take 1 (sort-by first [[1 [0 0]] [0 [1 0]]]))))) 
-  ; ([0 [1 0]] [1 [0 0]])
-  ; [1 0]
-  )
-
 (defn next-player [piece] ({:x :o, :o :x} piece))
 
 (defn
@@ -186,16 +161,6 @@
      :winner-size winner-size 
      :board-size size
      }))
-
-(comment
-  (def juu (partial (comp true? :winner)))
-  (juu { :winner :x }) ; false
-  (juu { :winner true }) ; true
-  (juu { :winner false }) ; false
-  (juu { :winner nil }) ; false
-
-  (move {:turn :x, :board-size 2, :board {}}) ; {:winner nil, :turn :o, :board {[0 0] :x}, :board-size 2}
-  )
 
 (defn 
   winner-found?
