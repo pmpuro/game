@@ -1,6 +1,12 @@
 (ns game.core)
 
-;; movement could be a vector
+;;
+;; todo
+;; - value-of could consider also opponent's pieces' positions
+;; - center positions should be considered more valuable than edge positions
+;;
+
+
 (def direction-left [-1 0])
 (def direction-right [1 0])
 (def direction-up [0 -1])
