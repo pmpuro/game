@@ -168,6 +168,7 @@
 
 (defn
   move
+  "returns a new state after a move"
   [state]
   (let [
         size (state :board-size)
