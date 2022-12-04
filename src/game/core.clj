@@ -5,6 +5,10 @@
 (def direction-right [1 0])
 (def direction-up [0 -1])
 (def direction-down [0 1])
+(def direction-diag-right-down [1 1])
+(def direction-diag-right-up [1 -1])
+(def direction-diag-left-down [-1 1])
+(def direction-diag-left-up [-1 -1])
 
 (defn
   position-at
@@ -98,7 +102,11 @@
   winner?
   "returns boolean whether a move at the given position is winner"
   [winner-length piece position board]
-  (let [directions [[direction-down direction-up] [direction-left direction-right]]]
+  (let [directions [
+                    [direction-down direction-up] 
+                    [direction-left direction-right]
+                    [direction-diag-left-up direction-diag-right-down]
+                    [direction-diag-left-down direction-diag-right-up]]]
     (some 
       true? 
       (map 
