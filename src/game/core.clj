@@ -176,7 +176,7 @@
         board (state :board)
         player (state :turn)
         new-move (select-move size player board)
-        winner (winner? size player new-move board)
+        winner (winner? winner-size player new-move board)
         new-board (assoc board new-move player)
         new-turn (next-player player)
         ]
