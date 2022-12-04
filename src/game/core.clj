@@ -173,7 +173,7 @@
   "playes the game until draw or win"
   [board winner-size board-size]
   (take-while 
-    winner-found?
+    (comp not winner-found?)
     (iterate move {:turn :x 
                    :winner-size winner-size 
                    :board-size board-size 
@@ -194,6 +194,6 @@
     (game-loop board winner-size board-size)))
 
 (comment
-  (take (* 3 3) (game))
+  (take (+ 1 (* 3 3)) (game))
   )
 
