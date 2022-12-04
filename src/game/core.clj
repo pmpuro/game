@@ -153,7 +153,8 @@
   move
   [state]
   (let [
-        size (state :size)
+        size (state :board-size)
+        winner-size (state :winner-size)
         board (state :board)
         player (state :turn)
         new-move (select-move size player board)
@@ -164,42 +165,50 @@
     {:winner (if winner player nil)
      :turn new-turn
      :board new-board
-     :size size
+     :winner-size winner-size 
+     :board-size size
      }))
 
-(def juu (partial (comp nil? :winner)))
 (comment
+  (def juu (partial (comp nil? :winner)))
   (juu { :winner :x })
   (juu { :winner true })
   (juu { :winner false })
   (juu { :winner nil })
 
-  (move {:turn :x, :size 2, :board {}}) ; {:winner nil, :turn :o, :board {[0 0] :x}, :size 2}
+  (move {:turn :x, :board-size 2, :board {}}) ; {:winner nil, :turn :o, :board {[0 0] :x}, :board-size 2}
   )
 
 
 ;;
 ;; state:
-;; { :winner nil,  :turn :x :board {} :size 2 }
+;; { :winner nil,  :turn :x :board {} :board-size 2 }
 ;;
 
 (defn
   game-loop
   "playes the game until draw or win"
-  [board board-size]
+  [board winner-size board-size]
   (take-while 
     (partial (comp nil? :winner)) 
-    (iterate move {:turn :x :size board-size :board board})))
+    (iterate move {:turn :x 
+                   :winner-size winner-size 
+                   :board-size board-size 
+                   :board board})))
 
 (comment
-  (take 4 (iterate move {:turn :x :size 2 :board {}}))
+  (take 4 (iterate move {:turn :x :board-size 2 :board {}}))
   )
 
 (defn
   game
   []
-  (let [size 2 board {}]
-    (game-loop board size)))
+  (let [
+        winner-size 2 
+        board-size 2 
+        board {}
+        ]
+    (game-loop board winner-size board-size)))
 
 (comment
   (take (* 3 3) (game))
