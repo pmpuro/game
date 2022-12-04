@@ -104,7 +104,7 @@
       (map 
         (fn [[left right]]
           (= 
-            (dec winner-length) 
+            (dec winner-length)
             (reduce 
               +
               (map count [
@@ -187,8 +187,8 @@
   game
   []
   (let [
-        winner-size 2 
-        board-size 2 
+        winner-size 3
+        board-size 2
         board {}
         ]
     (game-loop board winner-size board-size)))
