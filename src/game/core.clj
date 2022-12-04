@@ -180,7 +180,7 @@
         new-board (assoc board new-move player)
         new-turn (next-player player)
         ]
-    {:winner (if winner player nil)
+    {:winner (if winner player false)
      :turn new-turn
      :board new-board
      :winner-size winner-size 
@@ -188,34 +188,34 @@
      }))
 
 (comment
-  (def juu (partial (comp nil? :winner)))
-  (juu { :winner :x })
-  (juu { :winner true })
-  (juu { :winner false })
-  (juu { :winner nil })
+  (def juu (partial (comp true? :winner)))
+  (juu { :winner :x }) ; false
+  (juu { :winner true }) ; true
+  (juu { :winner false }) ; false
+  (juu { :winner nil }) ; false
 
   (move {:turn :x, :board-size 2, :board {}}) ; {:winner nil, :turn :o, :board {[0 0] :x}, :board-size 2}
   )
 
-
-;;
-;; state:
-;; { :winner nil,  :turn :x :board {} :board-size 2 }
-;;
+(defn 
+  winner-found?
+  [state]
+  (let [winner (state :winner)]
+    (not (nil? ({:x :x :o :o} winner)))))
 
 (defn
   game-loop
   "playes the game until draw or win"
   [board winner-size board-size]
   (take-while 
-    (partial (comp nil? :winner)) 
+    winner-found?
     (iterate move {:turn :x 
                    :winner-size winner-size 
                    :board-size board-size 
                    :board board})))
 
 (comment
-  (take 4 (iterate move {:turn :x :board-size 2 :board {}}))
+  (take 9 (iterate move {:turn :x :winner-size 2 :board-size 2 :board {}}))
   )
 
 (defn

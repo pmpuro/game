@@ -80,6 +80,14 @@
       (t/testing "on diagonal up"
         (t/is (i/winner? length :x [0 2] {[1 1] :x, [2 0] :x}))))))
 
+(t/deftest test-winner-found?
+  (t/is (i/winner-found? {:winner :x}))
+  (t/is (i/winner-found? {:winner :o}))
+  (t/is (not (i/winner-found? {})))
+  (t/is (not (i/winner-found? {:winner false})))
+  (t/is (not (i/winner-found? {:winner false})))
+  (t/is (not (i/winner-found? {:winner true}))))
+
 (t/deftest test-scan-board-for-empty-positions
   (let [size 2]
     (t/is (= 
