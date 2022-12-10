@@ -178,12 +178,13 @@
   game-loop
   "playes the game until draw or win"
   [board winner-size board-size]
-  (take-while 
-    (comp not winner-found?)
-    (iterate move {:turn :x 
-                   :winner-size winner-size 
-                   :board-size board-size 
-                   :board board})))
+  (take (inc (* (inc board-size) (inc board-size))) 
+        (take-while 
+          (comp not winner-found?)
+          (iterate move {:turn :x 
+                         :winner-size winner-size 
+                         :board-size board-size 
+                         :board board}))))
 
 (comment
   (take 9 (iterate move {:turn :x :winner-size 3 :board-size 2 :board {}}))
@@ -202,4 +203,6 @@
 (comment
   (take (+ 1 (* 3 3)) (game))
   )
+
+(defn -main [] (prn (last (game))))
 
