@@ -204,5 +204,18 @@
   (take (+ 1 (* 3 3)) (game))
   )
 
-(defn -main [] (prn (last (game))))
+(defn 
+  str-board
+  "returns a coll of strings (lines of board) representing the board"
+  [board board-size]
+  (for [y (range (inc board-size))]
+    (apply 
+      str 
+      (for [x (range (inc board-size))]
+        (get {:x "x" :o "o"} (board [x y]) ".")))))
+
+(defn 
+  -main 
+  [] 
+  (doall (map println (str-board (:board (last (game))) 2))))
 
