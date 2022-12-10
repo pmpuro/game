@@ -217,5 +217,8 @@
 (defn 
   -main 
   [] 
-  (doall (map println (str-board (:board (last (game))) 2))))
+  (let [result (last (game))
+        size (:board-size result)
+        board (:board result)] 
+    (doall (map println (str-board board size)))))
 
