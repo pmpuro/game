@@ -80,10 +80,12 @@
                       direction-diag-left-up
                       direction-diag-left-down
                       ]]
-      (reduce +
-              (map 
-                (fn [direction] (count (collect-to-direction piece position direction board))) 
-                directions)))))
+      (reduce 
+        +
+        (map 
+          (fn [direction] 
+            (count (collect-to-direction piece position direction board))) 
+          directions)))))
 
 (defn
   valid-move
