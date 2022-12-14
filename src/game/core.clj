@@ -141,7 +141,11 @@
   value-one-position
   [piece position board]
   (+
+
+   ;; own positions are more valuable
    (* 2 (value-of piece position board))
+
+   ;; consider opponent's positions as well
    (opponent-value-of piece position board)))
 
 (defn
