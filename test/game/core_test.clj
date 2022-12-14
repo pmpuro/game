@@ -30,9 +30,9 @@
   )
 
 (t/deftest test-opponent-value-of
-  (t/is (= 2 (i/value-of :o [1 1] { [1 0] :x, [1 2] :x})))
-  (t/is (= 2 (i/value-of :o [1 1] { [1 2] :x, [1 3] :x})))
-  (t/is (= 2 (i/value-of :o [1 2] { [1 0] :x, [1 1] :x}))))
+  (t/is (= 2 (i/opponent-value-of :o [1 1] { [1 0] :x, [1 2] :x})))
+  (t/is (= 2 (i/opponent-value-of :o [1 1] { [1 2] :x, [1 3] :x})))
+  (t/is (= 2 (i/opponent-value-of :o [1 2] { [1 0] :x, [1 1] :x}))))
 
 (t/deftest test-value-of
   (t/testing "value-of"
