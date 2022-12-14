@@ -87,6 +87,15 @@
             (count (collect-to-direction piece position direction board))) 
           directions)))))
 
+(defn next-player [piece] ({:x :o, :o :x} piece))
+
+(defn
+  opponent-value-of
+  "calculates the value of opponents positions"
+  [piece position board]
+  (let [opponent (next-player piece)]
+    (value-of opponent position board)))
+
 (defn
   valid-move
   "boolean whether the position is valid"
@@ -128,15 +137,20 @@
   (for [x (range (inc board-size)) y (range (inc board-size)) :when (nil? (board [x y]))] 
     [x y]))
 
+(defn 
+  value-one-position
+  [piece position board]
+  (+
+   (* 2 (value-of piece position board))
+   (opponent-value-of piece position board)))
+
 (defn
   value-positions
   "calculate given positions"
   [piece board free-positions-coll]
   (map 
-    (fn [position] [(value-of piece position board) position]) 
+    (fn [position] [(value-one-position piece position board) position]) 
     free-positions-coll))
-
-(defn next-player [piece] ({:x :o, :o :x} piece))
 
 (defn
   select-move

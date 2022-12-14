@@ -29,6 +29,11 @@
   (t/is (= [[1 0] [2 0]] (i/collect-to-direction :x [0 0] [1 0] { [0 0] :x, [1 0] :x, [2 0] :x })))
   )
 
+(t/deftest test-opponent-value-of
+  (t/is (= 2 (i/value-of :o [1 1] { [1 0] :x, [1 2] :x})))
+  (t/is (= 2 (i/value-of :o [1 1] { [1 2] :x, [1 3] :x})))
+  (t/is (= 2 (i/value-of :o [1 2] { [1 0] :x, [1 1] :x}))))
+
 (t/deftest test-value-of
   (t/testing "value-of"
     (t/testing "x already in the pos"
