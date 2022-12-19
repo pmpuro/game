@@ -79,17 +79,6 @@
     (value-of opponent position board)))
 
 (defn
-  valid-move
-  "boolean whether the position is valid"
-  [board-size [x y]]
-  (every? true? (map 
-                  (fn [fun] (and (fun x) (fun y)))
-                  [
-                   (fn [v] (not (neg? v)))
-                   (fn [v] (<= v board-size))
-                   ])))
-
-(defn
   winner?
   "returns boolean whether a move at the given position is winner"
   [winner-length piece position board]
