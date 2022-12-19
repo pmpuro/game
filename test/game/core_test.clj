@@ -5,18 +5,6 @@
 (t/deftest test-position-at
   (t/is (= [0 2] (i/position-at [1 1] [-1 1]))))
 
-(t/deftest test-give-left
-  (t/is (= [0 1] (i/give-left [1 1])))
-  (t/is (= [0 1] (i/give-left [1 1] false)))
-  (t/is (= [0 0] (i/give-left [1 1] true)))
-  )
-
-(t/deftest test-give-right
-  (t/is (= [2 1] (i/give-right [1 1])))
-  (t/is (= [2 1] (i/give-right [1 1] false)))
-  (t/is (= [2 2] (i/give-right [1 1] true)))
-  )
-
 (t/deftest test-is-there-piece
   (t/is (= true (i/is-there-piece :x [10 20] [1 0] { [11 20] :x })))
   (t/is (= false (i/is-there-piece :x [10 20] [1 0] { [11 20] :o })))

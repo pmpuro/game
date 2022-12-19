@@ -26,26 +26,6 @@
     position))
 
 (defn 
-  give-left
-  "returns a position from left side of the given position"
-  ([[x y]]
-   [(dec x) y])
-  ([[x y] diagonal?]
-   (if diagonal?
-     [(dec x) (dec y)]
-     (give-left [x y]))))
-
-(defn 
-  give-right
-  "returns a position from right side of the given position"
-  ([[x y]]
-   [(inc x) y])
-  ([[x y] diagonal?]
-   (if diagonal?
-     [(inc x) (inc y)]
-     (give-right [x y]))))
-
-(defn 
   is-there-piece
   "checks if there is a piece in given direction"
   [piece position direction board]
