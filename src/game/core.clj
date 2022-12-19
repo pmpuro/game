@@ -20,7 +20,10 @@
   position-at
   "returns position at given direction"
   [direction position]
-  (map #(+ %1 %2) direction position))
+  (map 
+    (fn [elem1 elem2] (+ elem1 elem2)) 
+    direction 
+    position))
 
 (defn 
   give-left
