@@ -83,3 +83,15 @@
                                                     [0 2] :x, [1 2] :x
                                                     })))))
 
+(t/deftest test-position-value-of
+  (let [
+        board-size 2
+        expected-value 1
+        ]
+    (t/is (= 0 (i/position-value-of :x [0 1] {})))
+    (t/is (= 0 (i/position-value-of :x [1 0] {})))
+    (t/is (= 0 (i/position-value-of :x [0 board-size] {})))
+    (t/is (= 0 (i/position-value-of :x [board-size 0] {})))
+    (t/is (= expected-value (i/position-value-of :x [1 1] {})))
+    (t/is (= 0 (i/position-value-of :x [1 1] { [1 1] :x})))))
+

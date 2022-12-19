@@ -109,6 +109,25 @@
   (for [x (range (inc board-size)) y (range (inc board-size)) :when (nil? (board [x y]))] 
     [x y]))
 
+(defn
+  position-value-of
+  "calculates the value based on location"
+  [piece position board]
+  (let [
+        valued-position 1
+        not-good 0
+        board-size 2
+        [x y] position
+        left (= 0 x)
+        top (= 0 y)
+        right (= board-size x)
+        bottom (= board-size y)
+        empty-position (nil? (get board position))
+        ]
+    (if (not (some true? [(not empty-position) left top right bottom]))
+      valued-position
+      not-good)))
+
 (defn 
   value-one-position
   [piece position board]
