@@ -95,10 +95,11 @@
             (dec winner-length)
             (reduce 
               +
-              (map count [
-                          (collect-to-direction piece position left board) 
-                          (collect-to-direction piece position right board) 
-                          ])))) 
+              (map 
+                count [
+                       (collect-to-direction piece position left board) 
+                       (collect-to-direction piece position right board) 
+                       ])))) 
         directions))))
 
 (defn
