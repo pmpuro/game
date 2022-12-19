@@ -134,10 +134,13 @@
   (+
 
    ;; own positions are more valuable
-   (* 2 (value-of piece position board))
+   (* 3 (value-of piece position board))
 
    ;; consider opponent's positions as well
-   (opponent-value-of piece position board)))
+   (* 2 (opponent-value-of piece position board))
+   
+   ;; not edge position
+   (* 1 (position-value-of piece position board))))
 
 (defn
   value-positions
@@ -232,4 +235,8 @@
         size (:board-size result)
         board (:board result)] 
     (doall (map println (str-board board size)))))
+
+(comment
+  (-main)
+  )
 
