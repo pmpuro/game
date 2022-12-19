@@ -2,7 +2,6 @@
 
 ;;
 ;; todo
-;; - value-of could consider also opponent's pieces' positions
 ;; - center positions should be considered more valuable than edge positions
 ;;
 
