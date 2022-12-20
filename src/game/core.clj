@@ -100,7 +100,11 @@
   scan-board-for-empty-positions
   "scans empty positions"
   [board-size board]
-  (for [x (range (inc board-size)) y (range (inc board-size)) :when (nil? (board [x y]))] 
+  (for [
+        x (range (inc board-size)) 
+        y (range (inc board-size)) 
+        :when (nil? (board [x y]))
+        ]
     [x y]))
 
 (defn
