@@ -157,7 +157,7 @@
   (let [
         possible-positions (scan-board-for-empty-positions board-size board)
         valued-positions (value-positions piece board possible-positions)
-        sorted-positions (sort-by first valued-positions)
+        sorted-positions (reverse (sort-by first valued-positions))
         ]
     (first (rest (first (take 1 sorted-positions))))))
 
