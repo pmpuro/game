@@ -1,7 +1,7 @@
 {:deps {}
  :aliases
  {
-  :run { :main-opts ["-m" "mato.core"]}
+  :run { :main-opts ["-m" "game.core"]}
   :watch {:extra-paths ["test"]
           :extra-deps {lambdaisland/kaocha {:mvn/version "1.71.1119"}}
           :main-opts   ["-m" "kaocha.runner"]
