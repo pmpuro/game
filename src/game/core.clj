@@ -207,10 +207,6 @@
         ]
     (game-loop board winner-size board-size)))
 
-(comment
-  (take (+ 1 (* 3 3)) (game))
-  )
-
 (defn 
   str-board
   "returns a coll of strings (lines of board) representing the board"
