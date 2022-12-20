@@ -195,10 +195,6 @@
                      :board-size board-size 
                      :board board}))))
 
-(comment
-  (take 9 (iterate move {:turn :x :winner-size 3 :board-size 2 :board {}}))
-  )
-
 (defn
   game
   []
