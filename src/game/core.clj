@@ -175,7 +175,6 @@
         new-board (assoc board new-move player)
         new-turn (next-player player)
         ]
-    (tap> new-board)
     {:winner (if winner player false)
      :turn new-turn
      :board new-board
@@ -193,13 +192,14 @@
   game-loop
   "playes the game until draw or win"
   [board winner-size board-size]
-  (take (inc (* (inc board-size) (inc board-size))) 
-        (take-while 
-          (comp not winner-found?)
-          (iterate move {:turn :x 
-                         :winner-size winner-size 
-                         :board-size board-size 
-                         :board board}))))
+  (take 
+    (inc (* (inc board-size) (inc board-size))) 
+    (take-while 
+      (comp not winner-found?)
+      (iterate move {:turn :x 
+                     :winner-size winner-size 
+                     :board-size board-size 
+                     :board board}))))
 
 (comment
   (take 9 (iterate move {:turn :x :winner-size 3 :board-size 2 :board {}}))
