@@ -129,6 +129,8 @@
 (defn 
   value-one-position
   [piece position board]
+
+  ;; sum of all ways that are valued
   (+
 
    ;; own positions are more valuable
