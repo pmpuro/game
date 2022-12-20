@@ -164,12 +164,14 @@
         winner-size (state :winner-size)
         board (state :board)
         player (state :turn)
+        done-already (state :done)
         new-move (select-move size player board)
         winner (winner? winner-size player new-move board)
         new-board (assoc board new-move player)
         new-turn (next-player player)
         ]
-    {:winner (if winner player false)
+    {:winner done-already
+     :done (if winner player false)
      :turn new-turn
      :board new-board
      :winner-size winner-size 
