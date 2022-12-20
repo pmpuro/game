@@ -1,11 +1,5 @@
 (ns game.core)
 
-;;
-;; todo
-;; - center positions should be considered more valuable than edge positions
-;;
-
-
 (def direction-left [-1 0])
 (def direction-right [1 0])
 (def direction-up [0 -1])
