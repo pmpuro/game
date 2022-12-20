@@ -175,6 +175,7 @@
         new-board (assoc board new-move player)
         new-turn (next-player player)
         ]
+    (tap> new-board)
     {:winner (if winner player false)
      :turn new-turn
      :board new-board
