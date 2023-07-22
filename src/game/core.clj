@@ -110,7 +110,7 @@
 (defn
   position-value-of
   "calculates the value based on location"
-  [piece position board]
+  [_ position board]
   (let [
         valued-position 1
         not-good 0
